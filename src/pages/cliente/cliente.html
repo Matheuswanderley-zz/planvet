@@ -1,0 +1,49 @@
+<ion-header style="font-family: 'Playfair Display', serif;">
+  <ion-navbar color="headerFooter">
+    <ion-title style="text-align: center">
+      Cadastro
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12>
+
+        <form (ngSubmit)="enviar()" [formGroup]="clienteForm">
+          <ion-list>
+            <ion-item [ngClass]="{'error-border':!clienteForm.controls.nome.valid && clienteForm.controls.nome.touched}">
+              <ion-label floating>Nome</ion-label>
+              <ion-input type="text" formControlName="nome" [(ngModel)]="cliente.nome" name="nome"></ion-input>
+            </ion-item>
+
+            <ion-item [ngClass]="{'error-border':!clienteForm.controls.cpf.valid && clienteForm.controls.cpf.touched}">
+              <ion-label floating>CPF</ion-label>
+              <ion-input type="text" formControlName="cpf" [(ngModel)]="cliente.cpf" name="cpf" (ionBlur)="validarCpf()"></ion-input>
+            </ion-item>
+            
+            <ion-item [ngClass]="{'error-border':!clienteForm.controls.dataNascimento.valid && clienteForm.controls.dataNascimento.touched}">
+              <ion-label floating>Data de Nascimento</ion-label>
+              <ion-datetime displayFormat="DD/MM/YYYY" formControlName="dataNascimento" [(ngModel)]="cliente.dataNascimento" name="dataNascimento"></ion-datetime>
+            </ion-item>
+
+            <ion-item [ngClass]="{'error-border':!clienteForm.controls.celular.valid && clienteForm.controls.celular.touched}">
+              <ion-label floating>Celular</ion-label>
+              <ion-input type="text" formControlName="celular" [brmasker]="{phone: true}" [(ngModel)]="cliente.celular" name="celular"></ion-input>
+            </ion-item>
+
+            <ion-item [ngClass]="{'error-border':!clienteForm.controls.email.valid && clienteForm.controls.email.touched}">
+              <ion-label floating>Email</ion-label>
+              <ion-input type="email" formControlName="email" [(ngModel)]="cliente.email" name="email"></ion-input>
+            </ion-item>
+
+          </ion-list>
+
+          <button ion-button type="submit" block color="primary" [disabled]="!clienteForm.valid">Cadastrar</button>
+        </form>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

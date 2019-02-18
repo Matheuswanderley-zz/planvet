@@ -1,0 +1,58 @@
+<ion-header style="font-family: 'Playfair Display', serif;">
+  <ion-navbar color="headerFooter">
+    <ion-title style="text-align: center">
+      Cadastro
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12>
+        <form (ngSubmit)="enviar()" [formGroup]="cupomForm">
+          <ion-list>
+            <ion-item [ngClass]="{'error-border':!cupomForm.controls.vendedor.valid && cupomForm.controls.vendedor.touched}">
+              <ion-label floating>Código do vendedor</ion-label>
+              <ion-input type="number" formControlName="vendedor" [(ngModel)]="cupom.vendedor"></ion-input>
+            </ion-item>
+
+            <ion-item [ngClass]="{'error-border':!cupomForm.controls.cpf.valid && cupomForm.controls.cpf.touched}">
+              <ion-label floating>CPF</ion-label>
+              <ion-input type="text" formControlName="cpf" [(ngModel)]="cupom.cpf" (ionBlur)="validarCpf()"></ion-input>
+            </ion-item>
+
+            <ion-item [ngClass]="{'error-border':!cupomForm.controls.cupom.valid && cupomForm.controls.cupom.touched}">
+              <ion-label floating>Número do Cupom</ion-label>
+              <ion-input type="number" formControlName="cupom" [(ngModel)]="cupom.cupom"></ion-input>
+            </ion-item>
+
+            <ion-item [ngClass]="{'error-border':!cupomForm.controls.dataCupom.valid && cupomForm.controls.dataCupom.touched}">
+              <ion-label floating>Data do Cupom</ion-label>
+              <ion-datetime displayFormat="DD/MM/YYYY" formControlName="dataCupom" [(ngModel)]="cupom.data"></ion-datetime>
+            </ion-item>
+
+            <ion-item [ngClass]="{'error-border':!cupomForm.controls.codigoBarras.valid && cupomForm.controls.codigoBarras.touched}">
+              <ion-label floating>Código de Barras do Produto</ion-label>
+              <ion-input type="number" formControlName="codigoBarras" [(ngModel)]="cupom.codigoBarras"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Li e aceito o regulamento. </ion-label>
+              <ion-checkbox formControlName="regulamento" [(ngModel)]="regulamento"></ion-checkbox>
+            </ion-item>
+
+            <ion-item>
+              <img [src]="foto" *ngIf="foto" />
+            </ion-item>
+          </ion-list>
+
+          <button ion-button type="button" block color="dark" (click)="tirarFoto()">Tirar foto do cupom</button>
+
+          <button ion-button type="submit" block color="primary" [disabled]="!cupomForm.valid">Enviar cupom</button>
+        </form>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,24 @@
+<ion-header style="font-family: 'Playfair Display', serif;">
+  <ion-navbar color="headerFooter">
+    <ion-title style="text-align: center">
+      PLANVET
+    </ion-title>
+  </ion-navbar>
+  <img src="assets/imgs/logovet.png" style="width: 100%"/>
+</ion-header>
+
+<ion-content padding>
+
+  <button ion-button block color="primary" (click)="navegar('cliente')">Cadastrar</button>
+
+  <button ion-button block color="purple" (click)="navegar('cupom')">Enviar Cupom</button>
+
+  <button ion-button block color="danger" (click)="navegar('regulamento')">Regulamento</button>
+
+</ion-content>
+
+<ion-footer style="text-align: center;font-family: 'Playfair Display', serif;">
+  <ion-toolbar color="headerFooter">
+    <ion-title >Plano Veterinário</ion-title>
+  </ion-toolbar>
+</ion-footer>
